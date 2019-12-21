@@ -26,6 +26,7 @@ public class SevenElevenService {
 
         List<DetailDto> list = new ArrayList<>();
         for (String id : ids) {
+            System.out.println("start bill id: " + id);
             if (StringUtils.isBlank(id)) {
                 continue;
             }
