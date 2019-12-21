@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>預覽</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
+  <link rel="stylesheet" th:href="@{/css/bill.css}">
+  <link rel="stylesheet" th:href="@{/css/column.css}">
+  <style>
+    @page {
+      size: A4
+    }
+  </style>
+</head>
+<body class="A4">
+<span th:each="i: ${#numbers.sequence(0, list.size() / 4)}">
+<section class="sheet padding-10mm">
+  <article>
+    <div class="row">
+      <div class="column"
+           th:each="detail, status: ${list.subList(i * 4, ((i + 1)* 4 > list.size() ? list.size() : (i + 1) * 4))}">
+        <div style="padding: 0px 2px 0px 2px; margin: 0 auto; float: middle; border-top: 0px; border-left: 0px; border: 2px solid #000000; margin: 10px; width: 298px; height: 460px;">
+          <div class="div_frame">
+            <table border="0" cellpadding="1" cellspacing="1" width="298px" style="padding-top:0px">
+              <tbody>
+              <tr>
+                <td></td>
+                <td style="text-align:right;">
+                  <span class="style4_1">&nbsp;</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <table id="table" align="center" border="0" cellpadding="0" cellspacing="0" width="290">
+              <tbody>
+              <tr>
+                <td align="center">
+                  <table id="tableA2" border="0" width="90%">
+                    <tbody>
+                    <tr>
+                      <td class="style8_1" align="center" valign="TOP">統一超商 <span id="Label1">交貨便 服務單</span></td>
+                    </tr>
+                    <tr>
+                      <!--三段式條碼:START-->
+                      <td align="center">
+                        <img id="imgBarCode1"
+                             th:src="${'https://epayment.7-11.com.tw/C2C/C2CWeb/' + detail.imgBarCode1}"
+                             style="height:30px;width:159px;border-width:0px;margin: -5px">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <span id="lblBarCode1" class="style7_1" th:text="${detail.lblBarCode1}">lblBarCode1</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <img id="imgBarCode2"
+                             th:src="${'https://epayment.7-11.com.tw/C2C/C2CWeb/' + detail.imgBarCode2}"
+                             style="height:30px;width:231px;border-width:0px;margin: -5px">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <span id="lblBarCode2" class="style7_1" th:text="${detail.lblBarCode2}">lblBarCode2</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <img id="imgBarCode3"
+                             th:src="${'https://epayment.7-11.com.tw/C2C/C2CWeb/' + detail.imgBarCode3}"
+                             style="height:30px;width:231px;border-width:0px;margin: -5px">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <span id="lblBarCode3" class="style7_1" th:text="${detail.lblBarCode3}">lblBarCode3</span>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" valign="TOP">
+                  <table id="tableA2" width="100%" cellpadding="0" cellspacing="0"
+                         style="border-width:1px;border-style:solid;padding:2px;margin-bottom:1px">
+                    <tbody>
+                    <tr>
+                      <td class="style8" colspan="2" style="text-align:center">
+                        交貨便服務代碼：
+                        <span id="lblC2BPinCode1" th:text="${detail.lblC2BPinCode1}">lblC2BPinCode1</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width:80px;padding:0px;margin:0px">
+                        <img th:src="${'https://epayment.7-11.com.tw/C2C/C2CWeb/' + detail.qrcode}"
+                             id="QRCODE" width="80" height="80">
+                      </td>
+                      <td class="style8_1">
+                        取件門市：<span id="lblRecvshop1" style="font-size:32px;" th:text="${detail.lblRecvshop1}">lblRecvshop1</span><br>
+                        取件人：<span id="lblRecver1" style="font-size:26px;"
+                                  th:text="${detail.lblRecver1}">lblRecver1</span>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table id="tableA2" border="0" cellpadding="0" cellspacing="0" width="100%"
+                         style="border-style: dashed;border-width: 1px;padding:4px;">
+                    <tbody>
+                    <tr>
+                      <td class="style8" colspan="2">
+                        物流專用條碼：<span id="lblBarCode4" th:text="${detail.lblBarCode4}">lblBarCode4</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="style8" colspan="2">
+                        繳費期限：<span id="lblDeadDateTime1" th:text="${detail.lblDeadDateTime1}">lblDeadDateTime1</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="style8" colspan="2">
+                        廠商名稱：<span id="lblPaymentCPName1"
+                                   th:text="${detail.lblPaymentCPName1}">lblPaymentCPName1</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="style8">
+                        寄件訂單編號：<span id="lblOrderNo" th:text="${detail.lblOrderNo}">lblOrderNo</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="style8">
+                        寄件人：<span id="lblShopperName1" th:text="detail.lblShopperName1">lblShopperName1</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="style4_1" colspan="2">【注意事項】</td>
+                    </tr>
+                    <tr>
+                      <td><span id="Span1" colspan="2" class="style4_1"><p>1.本島↔離島：寄件時加收離島配送費40元；</p><p
+                              style="margin-left:9px;">離島↔離島：寄件時加收離島配送費80元。</p></span></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><span id="Span3" colspan="2" class="style4_1"><p>2.材積限制：最長邊≦45cm；長＋寬＋高合計</p><p
+                              style="margin-left:8px;">≦105cm；重量≤ 5公斤。</p></span></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><span id="Span5" colspan="2" class="style4_1"><p>3.請將本單放置於專用袋中並自行實貼於包裹上；寄</p><p
+                              style="margin-left:8px;">件後無法取消寄件及更換包裹。</p></span></td>
+                    </tr>
+                    <tr>
+                      <td><span id="Span7" colspan="2" class="style4_1">4.本單尺寸10cm x 14cm請勿調整尺寸。</span></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <table>
+              <tbody>
+              <tr>
+                <td align="center">
+                  <span id="LabelError"></span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+</span>
+</body>
+</html>

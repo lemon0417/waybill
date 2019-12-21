@@ -1,0 +1,130 @@
+.style1 {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 22px;
+    FONT-FAMILY: "標楷體";
+}
+
+.style2 {
+    FONT-SIZE: 18px;
+    FONT-FAMILY: "標楷體";
+}
+
+.style3 {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 20px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style3_1 {
+    FONT-SIZE: 20px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style4 {
+    FONT-SIZE: 12px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style4_1 {
+    line-height: 13px;
+    FONT-SIZE: 12px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style5 {
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+    FONT-FAMILY: "標楷體";
+}
+
+.style6 {
+    FONT-SIZE: 14px;
+    FONT-FAMILY: "標楷體";
+}
+
+.style7 {
+    FONT-SIZE: 14px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style7_1 {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style8 {
+    line-height: 13px;
+    FONT-SIZE: 12px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style8_1 {
+    FONT-SIZE: 12px;
+    FONT-FAMILY: "新細明體";
+}
+
+.style9 {
+    FONT-WEIGHT: 200;
+    FONT-SIZE: 32px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+
+.style10 {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 18px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+
+.style11 {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    FONT-FAMILY: "標楷體";
+}
+
+.dashed_border {
+    BORDER-RIGHT: #000000 1px dashed;
+    BORDER-TOP: #000000 1px dashed;
+    BORDER-LEFT: #000000 1px dashed;
+    BORDER-BOTTOM: #000000 1px dashed;
+}
+
+.thiner_border {
+    BORDER-RIGHT: #000000 1px solid;
+    BORDER-TOP: #000000 1px solid;
+    BORDER-LEFT: #000000 1px solid;
+    BORDER-BOTTOM: #000000 1px solid;
+}
+
+.thicker_border {
+    BORDER-RIGHT: #000000 2px solid;
+    BORDER-TOP: #000000 2px solid;
+    BORDER-LEFT: #000000 2px solid;
+    BORDER-BOTTOM: #000000 2px solid;
+}
+
+.text_39pos {
+    FONT-SIZE: 22pt;
+    LINE-HEIGHT: 20px;
+    FONT-FAMILY: "Free 3 of 9 Extended";
+}
+
+.text_39pos_1 {
+    FONT-SIZE: 20pt;
+    LINE-HEIGHT: 20px;
+    FONT-FAMILY: "Free 3 of 9 Extended";
+}
+
+.text_39ocr {
+    FONT-SIZE: 26pt;
+    LINE-HEIGHT: 25px;
+    FONT-FAMILY: "Free 3 of 9 Extended";
+}
+
+.blank_row {
+    height: 5px !important;
+}
+
+p {
+    margin: 0
+}
