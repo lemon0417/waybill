@@ -71,10 +71,19 @@
   <input type="hidden" id="ids" name="ids">
 </form>
 
+<script th:src="@{js/tagify.polyfills.min.js}"></script>
 <script th:src="@{js/tagify.min.js}"></script>
 <script src="https://unpkg.com/css-doodle@0.7.7/css-doodle.min.js"></script>
 <script>
     (function () {
+        // for ie
+        var uaString = window.navigator.userAgent;
+        var match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(uaString);
+        if (match) {
+            document.querySelector('css-doodle').style.display = 'none';
+        }
+
+        // form
         var input = document.querySelector('#billNos');
         var tagify = new Tagify(input, {
             backspace: 'edit',
@@ -86,7 +95,9 @@
         sendElm.addEventListener('click', function (e) {
             e.preventDefault();
 
-            var all = tagify.value.map(({value}) => value).toString();
+            var all = tagify.value.map(function (el) {
+              return el.value;
+            }).toString();
             var idsElm = document.querySelector('#ids');
             idsElm.value = all;
 
