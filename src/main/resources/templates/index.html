@@ -73,6 +73,8 @@
 
 <script th:src="@{js/tagify.polyfills.min.js}"></script>
 <script th:src="@{js/tagify.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 <script src="https://unpkg.com/css-doodle@0.7.7/css-doodle.min.js"></script>
 <script>
     (function () {
@@ -94,6 +96,16 @@
         var sendElm = document.querySelector('#send');
         sendElm.addEventListener('click', function (e) {
             e.preventDefault();
+
+            if (tagify.value.length == 0) {
+                Swal.fire({
+                    title: '登愣!',
+                    text: '請輸入至少一筆資料',
+                    icon: 'error',
+                    confirmButtonText: '朕知道了'
+                });
+                return;
+            }
 
             var all = tagify.value.map(function (el) {
               return el.value;
