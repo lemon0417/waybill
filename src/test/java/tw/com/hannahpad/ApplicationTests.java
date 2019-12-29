@@ -3,7 +3,7 @@ package tw.com.hannahpad;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import tw.com.hannahpad.model.DetailDto;
+import tw.com.hannahpad.dto.DetailDto;
 import tw.com.hannahpad.service.SevenElevenService;
 
 import java.io.IOException;

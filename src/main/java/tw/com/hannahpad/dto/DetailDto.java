@@ -1,4 +1,4 @@
-package tw.com.hannahpad.model;
+package tw.com.hannahpad.dto;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

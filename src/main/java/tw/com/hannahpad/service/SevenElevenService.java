@@ -8,7 +8,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import tw.com.hannahpad.model.DetailDto;
+import tw.com.hannahpad.dto.DetailDto;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,7 +49,6 @@ public class SevenElevenService {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
         client.close();
 

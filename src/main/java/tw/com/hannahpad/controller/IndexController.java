@@ -7,11 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import tw.com.hannahpad.service.SevenElevenService;
+import tw.com.hannahpad.service.SlackService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    private SlackService slack;
 
     @Autowired
     private SevenElevenService service;
@@ -22,7 +27,8 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/preview", method = RequestMethod.POST)
-    public String getPreview(@RequestParam Set<String> ids, ModelMap map) {
+    public String getPreview(@RequestParam Set<String> ids, ModelMap map, HttpServletRequest request) {
+        slack.sendMessage(ids, request);
         map.addAttribute("list", service.entry(ids));
         return "/preview";
     }
