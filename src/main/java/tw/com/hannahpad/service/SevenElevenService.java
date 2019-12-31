@@ -7,10 +7,12 @@ import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tw.com.hannahpad.dto.DetailDto;
 
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,13 +20,26 @@ import java.util.Set;
 
 @Service
 public class SevenElevenService {
+
+    @Autowired
+    private RetryService rs;
+
     public List<DetailDto> entry(Set<String> ids) {
+        List<DetailDto> list = new ArrayList<>();
+
+        try {
+            if (!rs.precheck("epayment.7-11.com.tw")) {
+                return list;
+            }
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
         WebClient client = new WebClient(BrowserVersion.CHROME);
         client.addRequestHeader("Referer", "https://epayment.7-11.com.tw/C2C/C2CWeb/C2C.aspx");
         client.getOptions().setCssEnabled(false);
         client.getOptions().setJavaScriptEnabled(false);
 
-        List<DetailDto> list = new ArrayList<>();
         for (String id : ids) {
             System.out.println("start bill id: " + id);
             if (StringUtils.isBlank(id)) {
