@@ -85,6 +85,17 @@
             document.querySelector('css-doodle').style.display = 'none';
         }
 
+        var errMsg = getUrlVars()['errMsg'];
+        if (errMsg) {
+            errMsg = decodeURIComponent(errMsg);
+            Swal.fire({
+                title: '',
+                html: '資料格式有誤:<br>' + errMsg,
+                icon: 'error',
+                confirmButtonText: '朕知道了'
+            })
+        }
+
         // form
         var input = document.querySelector('#billNos');
         var tagify = new Tagify(input, {
@@ -116,6 +127,14 @@
             document.querySelector('#form').submit();
         })
     })()
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+           vars[key] = value;
+        });
+        return vars;
+    }
 </script>
 </body>
 </html>

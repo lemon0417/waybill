@@ -8,7 +8,7 @@ import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.web.client.RestTemplate;
 
 @EnableRetry
-@ComponentScan({"tw.com.hannahpad.service", "tw.com.hannahpad.controller"})
+@ComponentScan({"tw.com.hannahpad.service", "tw.com.hannahpad.controller", "tw.com.hannahpad.exception"})
 @SpringBootApplication
 public class WebApplication {
 
