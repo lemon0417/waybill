@@ -14,7 +14,7 @@
 <div class="container">
   <div class="wrapper">
     <h1>託運單批次產生器</h1>
-    <input id='billNos' class='textarea'>
+    <input id="billNos" class="textarea">
     <div align="center">
       <input type="button" id="send" value="送  出">
     </div>
@@ -77,64 +77,64 @@
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 <script src="https://unpkg.com/css-doodle@0.7.7/css-doodle.min.js"></script>
 <script>
-    (function () {
-        // for ie
-        var uaString = window.navigator.userAgent;
-        var match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(uaString);
-        if (match) {
-            document.querySelector('css-doodle').style.display = 'none';
-        }
-
-        var errMsg = getUrlVars()['errMsg'];
-        if (errMsg) {
-            errMsg = decodeURIComponent(errMsg);
-            Swal.fire({
-                title: '',
-                html: '資料格式有誤:<br>' + errMsg,
-                icon: 'error',
-                confirmButtonText: '朕知道了'
-            })
-        }
-
-        // form
-        var input = document.querySelector('#billNos');
-        var tagify = new Tagify(input, {
-            backspace: 'edit',
-            delimiters: ',|\\s',
-            callbacks: {}
-        });
-
-        var sendElm = document.querySelector('#send');
-        sendElm.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            if (tagify.value.length == 0) {
-                Swal.fire({
-                    title: '登愣!',
-                    text: '請輸入至少一筆資料',
-                    icon: 'error',
-                    confirmButtonText: '朕知道了'
-                });
-                return;
-            }
-
-            var all = tagify.value.map(function (el) {
-              return el.value;
-            }).toString();
-            var idsElm = document.querySelector('#ids');
-            idsElm.value = all;
-
-            document.querySelector('#form').submit();
-        })
-    })()
-
-    function getUrlVars() {
-        var vars = {};
-        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-           vars[key] = value;
-        });
-        return vars;
+  (function () {
+    // for ie
+    var uaString = window.navigator.userAgent;
+    var match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(uaString);
+    if (match) {
+      document.querySelector('css-doodle').style.display = 'none';
     }
+
+    var errMsg = getUrlVars()['errMsg'];
+    if (errMsg) {
+      errMsg = decodeURIComponent(errMsg);
+      Swal.fire({
+        title: '',
+        html: '資料格式有誤:<br>' + errMsg,
+        icon: 'error',
+        confirmButtonText: '朕知道了'
+      })
+    }
+
+    // form
+    var input = document.querySelector('#billNos');
+    var tagify = new Tagify(input, {
+      backspace: 'edit',
+      delimiters: ',|\\s',
+      callbacks: {}
+    });
+
+    var sendElm = document.querySelector('#send');
+    sendElm.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      if (tagify.value.length == 0) {
+        Swal.fire({
+          title: '登愣!',
+          text: '請輸入至少一筆資料',
+          icon: 'error',
+          confirmButtonText: '朕知道了'
+        });
+        return;
+      }
+
+      var all = tagify.value.map(function (el) {
+        return el.value;
+      }).toString();
+      var idsElm = document.querySelector('#ids');
+      idsElm.value = all;
+
+      document.querySelector('#form').submit();
+    })
+  })()
+
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
 </script>
 </body>
 </html>
