@@ -10,7 +10,6 @@ import tw.com.hannahpad.dto.SlackPayloadDto;
 import tw.com.hannahpad.helper.UserAnalysisUtil;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.Set;
 
 @Service
@@ -27,10 +26,14 @@ public class SlackService {
             return;
         }
 
-        String message = String.format("ip: %s\n", UserAnalysisUtil.getIpAddr(request));
-        message += String.format("user agent: %s\n", UserAnalysisUtil.getUserAgent(request));
-        message += String.format("ids: %s", Arrays.toString(ids.toArray()));
-        SlackPayloadDto payload = new SlackPayloadDto(message);
+        StringBuilder message = new StringBuilder();
+        message.append("ip: ").append(UserAnalysisUtil.getIpAddr(request))
+                .append(System.lineSeparator())
+                .append("user agent: ").append(UserAnalysisUtil.getUserAgent(request))
+                .append(System.lineSeparator())
+                .append("ids: ").append(String.join(", ", ids))
+        ;
+        SlackPayloadDto payload = new SlackPayloadDto(message.toString());
 
         try {
             ResponseEntity<String> response = rest.postForEntity(url, payload, String.class);
