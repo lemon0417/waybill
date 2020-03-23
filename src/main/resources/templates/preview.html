@@ -15,7 +15,7 @@
   </style>
 </head>
 <body class="A4">
-<span th:each="i: ${#numbers.sequence(0, list.size() / 4)}">
+<span th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
 <section class="sheet padding-10mm">
   <article>
     <div class="row">
