@@ -16,6 +16,10 @@
     <h1>託運單批次產生器</h1>
     <input id="billNos" class="textarea">
     <div align="center">
+      <select id="per">
+        <option value="1">一份/頁</option>
+        <option value="4">四份/頁</option>
+      </select>
       <input type="button" id="send" value="送  出">
     </div>
   </div>
@@ -69,6 +73,7 @@
 
 <form id="form" th:action="@{/preview}" method="post">
   <input type="hidden" id="ids" name="ids">
+  <input type="hidden" id="perPage" name="perPage">
 </form>
 
 <script th:src="@{js/tagify.polyfills.min.js}"></script>
@@ -123,6 +128,8 @@
       }).toString();
       var idsElm = document.querySelector('#ids');
       idsElm.value = all;
+      var perPageElm = document.querySelector("#perPage");
+      perPageElm.value = document.querySelector("#per").value;
 
       document.querySelector('#form').submit();
     })

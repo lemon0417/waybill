@@ -54,6 +54,13 @@ css-doodle {
     padding: 0.3rem;
 }
 
+#per {
+    font-size: large;
+    border: 4px solid #494949 !important;
+    max-height: calc(1.4em + 30px);
+    height: calc(1.4em + 30px);
+}
+
 #send {
     color: #494949 !important;
     text-transform: uppercase;
